@@ -1,0 +1,32 @@
+zookeeper:
+  image: mesos
+  ports: 
+    - "49181:2181"
+  command: /usr/share/zookeeper/bin/zkServer.sh start-foreground
+master:
+  build: mesos-master
+  hostname: master
+  ports:
+    - "5050"
+  links:
+    - zookeeper:zookeeper
+#    - slave:slave
+slave:
+  build: mesos-slave
+  expose:
+    - "6700"
+    - "6701"
+    - "6702" 
+    - "6703"
+    - "8000"
+    - "3100"
+    - "3101"
+    - "5051"
+  links:
+    - zookeeper:zookeeper
+marathon:
+  build: mesos-marathon
+  ports:
+    - "10080:8080"
+  links:
+    - "zookeeper:zookeeper"
