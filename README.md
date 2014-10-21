@@ -1,4 +1,4 @@
-docker-mesos
+mesos-docker-marathon
 =====
 
 A simple distributed computing cluster-in-a-box: Mesos, zookeeper, marathon. 
@@ -18,8 +18,9 @@ However, doing so allows you to change the quorum inside the mesos-master/Docker
 
 To open up the Mesos UI, open http://your docker host's IP:15050
 in case you tie the mesos-master to 15050 (you can only have a single master then)
-or determine the port used on the host by doing a 
-sudo docker ps | grep dockermesos_master
+or determine the port used on the host by doing a
+ 
+* sudo docker ps | grep dockermesos_master
 
 To open up 
 Marathon UI: open http://your docker host's IP:10080
